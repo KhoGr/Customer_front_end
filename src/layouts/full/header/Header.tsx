@@ -24,7 +24,7 @@ const Profile = () => {
             {
               key: "profile",
               label: (
-                <Link to="#">
+                <Link to="/account/profile">
                   <UserOutlined /> Hồ sơ của tôi
                 </Link>
               ),

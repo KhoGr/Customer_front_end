@@ -25,16 +25,24 @@ const userApi = {
         return  axiosClient.post<RegisterLocalResponse>(`${URL}/register`, data);
     },
 
-    verifyAccount(data: verifyAccountRequest) {
-        return axiosClient.get<verifyAccountResponse>(`${URL}/verify-account`, { params: data });
-    },
+
 
     login(data: postLoginRequest) {
         return axiosClient.post<postLoginResponse>(`${URL}/login`, data);
     },
-    //xong đến đây
     logout() {
         return axiosClient.post<postLogoutRequest>(`${URL}/logout`);
+    },
+    getMe() {
+        return axiosClient.get<getMeResponse>(`${URL}/me`);
+      },
+      updatePassword(data: updatePasswordRequest) {
+        return axiosClient.put<updatePasswordResponse>(`${URL}/update-password`, data);
+    },
+        //xong đến đây
+
+    verifyAccount(data: verifyAccountRequest) {
+        return axiosClient.get<verifyAccountResponse>(`${URL}/verify-account`, { params: data });
     },
 
     requestPasswordReset(data: requestPasswordReset) {
@@ -45,9 +53,7 @@ const userApi = {
         return axiosClient.post<resetPasswordResponse>(`${URL}/reset-password`, data);
     },
 
-    updatePassword(data: updatePasswordRequest) {
-        return axiosClient.put<updatePasswordResponse>(`${URL}/update-password`, data);
-    },
+
 
     getUserProfile() {
         return axiosClient.get<getUserProfileResponse>(`${URL}/profile`);
@@ -70,9 +76,7 @@ const userApi = {
     googleLoginCallback() {
         return axiosClient.get<googleAuthenResponse>(`${URL}/auth/google/callback`);
     },
-    getMe() {
-        return axiosClient.get<getMeResponse>(`${URL}/me`);
-      },
+
       
 };
 

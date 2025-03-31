@@ -12,7 +12,8 @@ const BlankRootLayout =Loadable(lazy(()=>import("../layouts/blank/BlankRootprote
 const Dashboard = Loadable(lazy(() => import("../pages/dashboards/Dashboard")));
 const Login = Loadable(lazy(() => import("../pages/auth/Login")));
 const Register = Loadable(lazy(() => import("../pages/auth/Register")));
-const Profile=Loadable(lazy(()=>import("../pages/profile/Profile")))
+const Profile=Loadable(lazy(()=>import("../pages/profile/Profile")));
+const EditProfile =Loadable(lazy(()=>import("../pages/profile/EditProfile")))
 
 
 
@@ -24,6 +25,7 @@ const Router = createBrowserRouter([
       { path: "/", element: <Dashboard /> },
       { path: "/dashboard", element: <Dashboard /> },
       {path:"/account/profile",element:<Profile/>},
+      {path:"/account/edit-profile",element:<EditProfile/>},
 
     ],
   },
