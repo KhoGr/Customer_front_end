@@ -1,12 +1,6 @@
 import { Form, Input, Button, Alert } from "antd";
-import { postLoginRequest } from "../../types/User";
+import { postLoginRequest,LoginFormProps } from "../../types/User";
 
-interface LoginFormProps {
-  onSubmit: (data: postLoginRequest) => void;
-  loading: boolean;
-  error: string | null;
-  onForgotPasswordClick: () => void;
-}
 
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, loading, error, onForgotPasswordClick }) => {
   const [form] = Form.useForm();

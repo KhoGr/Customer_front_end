@@ -13,7 +13,10 @@ const Dashboard = Loadable(lazy(() => import("../pages/dashboards/Dashboard")));
 const Login = Loadable(lazy(() => import("../pages/auth/Login")));
 const Register = Loadable(lazy(() => import("../pages/auth/Register")));
 const Profile=Loadable(lazy(()=>import("../pages/profile/Profile")));
-const EditProfile =Loadable(lazy(()=>import("../pages/profile/EditProfile")))
+const EditProfile =Loadable(lazy(()=>import("../pages/profile/EditProfile")));
+const ProductDetail=Loadable(lazy(()=>import("../components/product/ProductDetail")));
+const AuthAgGrid=Loadable(lazy(()=>import("../pages/agGrid/agGrid")))
+
 
 
 
@@ -26,6 +29,8 @@ const Router = createBrowserRouter([
       { path: "/dashboard", element: <Dashboard /> },
       {path:"/account/profile",element:<Profile/>},
       {path:"/account/edit-profile",element:<EditProfile/>},
+      {path:"/account/product-detail",element:<ProductDetail/>},
+      {path:"/account/auth-grid",element:<AuthAgGrid/>}
 
     ],
   },

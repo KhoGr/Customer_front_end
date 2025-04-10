@@ -13,8 +13,7 @@ import {
   Select,
 } from 'antd';
 import React, { Children, useState } from 'react';
-import { log } from 'console';
-import ScrollToTop from '../shared/ScrollToTop';
+
 
 const { Option } = Select;
 interface DataNodeType {

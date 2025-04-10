@@ -1,15 +1,16 @@
-
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMe } from "../../redux/slices/auth.slice";
 import { RootState, AppDispatch } from "../../redux/store";
 import { Upload, Form, Input, Button, Card, Avatar, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import ImgCrop from "antd-img-crop"; 
+import ImgCrop from "antd-img-crop";
 import userApi from "../../api/userApi";
+import { useNavigate } from "react-router-dom";
 
 const EditProfileForm: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const { user, loading } = useSelector((state: RootState) => state.auth);
   const [form] = Form.useForm();
   const [avatar, setAvatar] = useState<string | null>(user?.avatar || null);
@@ -28,29 +29,27 @@ const EditProfileForm: React.FC = () => {
     }
   }, [user, form]);
 
-  // Xử lý cập nhật thông tin cá nhân
   const handleUpdate = async (values: any) => {
     try {
-      await userApi.updateUserProfile(values);
+      await userApi.updateUserProfile({ ...values, avatar });
       message.success("Cập nhật thông tin thành công!");
-      dispatch(getMe()); // Refresh thông tin người dùng
+      dispatch(getMe());
+      navigate("/account/profile"); 
     } catch (error: any) {
       message.error(error.response?.data?.message || "Cập nhật thất bại, thử lại!");
     }
   };
 
-  // Xử lý cập nhật avatar
   const handleUpload = async (file: File) => {
     setUploading(true);
     try {
       const formData = new FormData();
       formData.append("avatar", file);
-
       const response = await userApi.updateAvatar(formData);
       if (response.status === 200) {
         message.success("Cập nhật ảnh đại diện thành công!");
         setAvatar(response.data.newSrc);
-        dispatch(getMe()); // Refresh profile
+        dispatch(getMe());
       }
     } catch (error: any) {
       message.error(error.response?.data?.message || "Cập nhật ảnh đại diện thất bại!");
@@ -62,14 +61,13 @@ const EditProfileForm: React.FC = () => {
     <Card style={{ maxWidth: 600, margin: "auto", borderRadius: 10, boxShadow: "0 4px 10px rgba(0,0,0,0.1)" }}>
       <h2 style={{ textAlign: "center" }}>Chỉnh Sửa Hồ Sơ</h2>
       
-      {/* Upload Avatar */}
       <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
         <ImgCrop>
           <Upload
             showUploadList={false}
             beforeUpload={(file) => {
               handleUpload(file);
-              return false; 
+              return false;
             }}
           >
             <Avatar size={100} src={avatar} style={{ border: "3px solid #1890ff", cursor: "pointer" }} />
@@ -97,7 +95,6 @@ const EditProfileForm: React.FC = () => {
         <Form.Item label="Địa chỉ" name="address">
           <Input />
         </Form.Item>
-        
         <Button type="primary" htmlType="submit" block loading={loading}>
           Cập Nhật
         </Button>

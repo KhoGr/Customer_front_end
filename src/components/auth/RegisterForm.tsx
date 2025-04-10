@@ -1,13 +1,7 @@
 import { Form, Input, Button, Alert } from "antd";
-import { RegisterLocalRequest } from "../../types/User";
+import { RegisterLocalRequest,RegisterFormProps } from "../../types/User";
 
-interface RegisterFormProps {
-  onSubmit: (data: RegisterLocalRequest) => void;
-  loading: boolean;
-  error: string | null;
-  onLoginClick: () => void;
 
-}
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ onSubmit, loading, error }) => {
   const [form] = Form.useForm();

@@ -136,3 +136,16 @@ export interface getMeResponse {
   };
 }
 
+export interface LoginFormProps {
+  onSubmit: (data: postLoginRequest) => void;
+  loading: boolean;
+  error: string | null;
+  onForgotPasswordClick: () => void;
+}
+export interface RegisterFormProps {
+  onSubmit: (data: RegisterLocalRequest) => void;
+  loading: boolean;
+  error: string | null;
+  onLoginClick: () => void;
+
+}

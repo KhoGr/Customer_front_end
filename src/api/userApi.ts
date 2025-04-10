@@ -19,7 +19,7 @@ import {
 } from "../types/User";  
 
 const URL = "/account";
-
+// sửa data thành request
 const userApi = {
     register(data: RegisterLocalRequest) {
         return  axiosClient.post<RegisterLocalResponse>(`${URL}/register`, data);
@@ -30,6 +30,7 @@ const userApi = {
     login(data: postLoginRequest) {
         return axiosClient.post<postLoginResponse>(`${URL}/login`, data);
     },
+
     logout() {
         return axiosClient.post<postLogoutRequest>(`${URL}/logout`);
     },
