@@ -14,7 +14,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate("/"); // Nếu đã đăng nhập, chuyển hướng về trang chủ ngay
+      navigate("/"); 
     }
   }, [token, navigate]);
 
@@ -23,8 +23,12 @@ const Login = () => {
   };
 
   const handleForgotPassword = () => {
-    navigate("/forgot-password"); // Điều hướng đến trang quên mật khẩu
+    navigate("/forgot-password");
   };
+  const handleLoginByGoogle = () => {
+    window.location.href = `http://localhost:4000/api/account/auth/google`;
+    console.log("gửi thành công request đến server")
+  };   
 
   return (
     <div className="flex items-center justify-center h-screen w-screen bg-gray-100">
@@ -35,6 +39,15 @@ const Login = () => {
 
         <LoginForm onSubmit={handleLogin} loading={loading} error={error} onForgotPasswordClick={handleForgotPassword} />
       </div>
+      <div className="mt-6 text-center">
+          <p className="text-gray-500 mb-2">hoặc</p>
+          <button
+            onClick={handleLoginByGoogle}
+            className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
+          >
+            Đăng nhập với Google
+          </button>
+        </div>
     </div>
   );
 };

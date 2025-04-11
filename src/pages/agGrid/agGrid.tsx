@@ -5,6 +5,8 @@ import { AgGridReact } from 'ag-grid-react';
 import { ColDef } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
+import { themeBalham } from 'ag-grid-community';
+
 
 interface User {
   id: number;
@@ -139,7 +141,7 @@ const AuthAgGrid: React.FC = () => {
     <div style={{ padding: '20px' }}>
       <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       <div className="ag-theme-alpine" style={{ height: 500, width: '100%', marginTop: 30 }}>
-        <AgGridReact<User>
+        <AgGridReact<User> theme={themeBalham}
             rowData={testrowData}
           columnDefs={columnDefs}
           defaultColDef={{

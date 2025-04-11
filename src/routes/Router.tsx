@@ -2,6 +2,8 @@
 import { lazy } from "react";
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Loadable from "../layouts/full/shared/loadable/Loadable";
+import GoogleSuccess from "../components/auth/GoogleSuccess"
+
 
 /* Layouts */
 const BlankLayout = Loadable(lazy(() => import("../layouts/blank/BlankLayout")));
@@ -16,6 +18,7 @@ const Profile=Loadable(lazy(()=>import("../pages/profile/Profile")));
 const EditProfile =Loadable(lazy(()=>import("../pages/profile/EditProfile")));
 const ProductDetail=Loadable(lazy(()=>import("../components/product/ProductDetail")));
 const AuthAgGrid=Loadable(lazy(()=>import("../pages/agGrid/agGrid")))
+
 
 
 
@@ -50,6 +53,10 @@ const Router = createBrowserRouter([
             <Register />
         ),
       },
+      // {
+      //   path: "/google-success",
+      //   element: <GoogleSuccess />,
+      // }
     ],
   },
 ]);
