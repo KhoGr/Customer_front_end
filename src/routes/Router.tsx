@@ -33,7 +33,8 @@ const Router = createBrowserRouter([
       {path:"/account/profile",element:<Profile/>},
       {path:"/account/edit-profile",element:<EditProfile/>},
       {path:"/account/product-detail",element:<ProductDetail/>},
-      {path:"/account/auth-grid",element:<AuthAgGrid/>}
+      {path:"/account/auth-grid",element:<AuthAgGrid/>},
+
 
     ],
   },
@@ -53,10 +54,8 @@ const Router = createBrowserRouter([
             <Register />
         ),
       },
-      // {
-      //   path: "/google-success",
-      //   element: <GoogleSuccess />,
-      // }
+      { path: "/google-success", element: <GoogleSuccess /> },
+ 
     ],
   },
 ]);

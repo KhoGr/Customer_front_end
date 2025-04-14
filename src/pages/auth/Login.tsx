@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../redux/store";
-import { postLoginRequest } from "../../types/User";
-import { loginUser } from "../../redux/slices/auth.slice";
-import { useNavigate } from "react-router-dom";
-import LoginForm from "../../components/auth/LoginForm";
-import { Alert } from "antd";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../redux/store';
+import { postLoginRequest } from '../../types/User';
+import { loginUser } from '../../redux/slices/auth.slice';
+import { useNavigate } from 'react-router-dom';
+import LoginForm from '../../components/auth/LoginForm';
+import { Alert, Button } from 'antd';
 
 const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -14,7 +14,7 @@ const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate("/"); 
+      navigate('/');
     }
   }, [token, navigate]);
 
@@ -23,12 +23,11 @@ const Login = () => {
   };
 
   const handleForgotPassword = () => {
-    navigate("/forgot-password");
+    navigate('/forgot-password');
   };
-  const handleLoginByGoogle = () => {
-    window.location.href = `http://localhost:4000/api/account/auth/google`;
-    console.log("gửi thành công request đến server")
-  };   
+  const handleGoogleLogin = () => {
+    window.location.href = 'http://localhost:4000/api/account/auth/google';
+  };
 
   return (
     <div className="flex items-center justify-center h-screen w-screen bg-gray-100">
@@ -37,17 +36,19 @@ const Login = () => {
 
         {error && <Alert message={error} type="error" className="mb-4" showIcon />}
 
-        <LoginForm onSubmit={handleLogin} loading={loading} error={error} onForgotPasswordClick={handleForgotPassword} />
+        <LoginForm
+          onSubmit={handleLogin}
+          loading={loading}
+          error={error}
+          onForgotPasswordClick={handleForgotPassword}
+        />
       </div>
       <div className="mt-6 text-center">
-          <p className="text-gray-500 mb-2">hoặc</p>
-          <button
-            onClick={handleLoginByGoogle}
-            className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Đăng nhập với Google
-          </button>
-        </div>
+        <p className="text-gray-500 mb-2">hoặc</p>
+        <Button onClick={handleGoogleLogin} block type="default" className="mt-4">
+          Đăng nhập bằng Google
+        </Button>
+      </div>
     </div>
   );
 };
