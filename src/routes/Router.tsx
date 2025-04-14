@@ -1,6 +1,6 @@
 
 import { lazy } from "react";
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter} from "react-router-dom";
 import Loadable from "../layouts/full/shared/loadable/Loadable";
 import GoogleSuccess from "../components/auth/GoogleSuccess"
 

@@ -23,7 +23,7 @@ const Login = () => {
   };
 
   const handleForgotPassword = () => {
-    navigate('/forgot-password');
+    navigate('/account/forgot-password');
   };
   const handleGoogleLogin = () => {
     window.location.href = 'http://localhost:4000/api/account/auth/google';
@@ -42,13 +42,14 @@ const Login = () => {
           error={error}
           onForgotPasswordClick={handleForgotPassword}
         />
-      </div>
-      <div className="mt-6 text-center">
+              <div className="mt-6 text-center">
         <p className="text-gray-500 mb-2">hoặc</p>
         <Button onClick={handleGoogleLogin} block type="default" className="mt-4">
           Đăng nhập bằng Google
         </Button>
       </div>
+      </div>
+
     </div>
   );
 };

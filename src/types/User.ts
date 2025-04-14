@@ -4,12 +4,7 @@ export interface RegisterLocalRequest {
   password: string;
   name: string;
 }
-export interface RegisterFormProps {
-  onSubmit: (data: RegisterLocalRequest) => void;
-  loading: boolean;
-  error: string | null;
-  onLoginClick: () => void;
-}
+
 export interface RegisterLocalResponse {
   message: string;
   account?: {
@@ -36,7 +31,6 @@ export interface RegisterLocalResponse {
     updatedAt: string;
   };
 }
-//verifyAccount(bug)
 export interface verifyAccountRequest {
   token: string;
 }
@@ -63,27 +57,31 @@ export interface postLogoutRequest {
 export interface requestPasswordReset {
   email: string;
 }
-export interface responsePasswordReset {
-  message: string;
+
+export interface resetPasswordFormProps{
+  onSubmit:(data:requestPasswordReset)=>void;
+  loading:boolean;
+  error:string|null;
 }
 //resetPassword
 export interface resetPasswordRequest {
   token: string;
   newPassword: string;
 }
-export interface resetPasswordResponse {
-  message: string;
+export interface NewPasswordFormProps{
+  onSubmit:(data:resetPasswordRequest)=>void;
+  loading:boolean;
+  error:string|null;
+
 }
+
 
 //updatePassword after login
 export interface updatePasswordRequest {
   oldPassword: string;
   newPassword: string;
 }
-export interface updatePasswordResponse {
-  message: string;
-}
-//update avatar (chưa test)
+
 
 //getUserProfile
 export interface getUserProfileResponse {
@@ -148,4 +146,5 @@ export interface RegisterFormProps {
   error: string | null;
   onLoginClick: () => void;
 
+  
 }
